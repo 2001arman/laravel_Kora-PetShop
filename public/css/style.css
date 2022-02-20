@@ -1,0 +1,46 @@
+.myButton{
+    border-radius: 30px;
+    width: 250px;
+    background-color: #516975;
+    text-decoration: none;
+    display: inline-block;
+    height: 64px;
+    color: white;
+    border: none;
+    box-shadow: 2px 10px 18px 2px rgba(81,105,117,0.18);
+}
+
+.judul{
+    color: #7CC1BC;
+}
+
+p{
+    color: #516975;
+}
+
+h1, h2{
+    color: #55595C;
+}
+
+.myCard{
+    width: 40%;
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 22px rgba(180, 153, 153, 0.3);
+    cursor: pointer;
+}
+
+.myCard img{
+    width: 60px;
+}
+
+.nomor{
+    color: #7CC1BC;
+}
+
+.layanan{
+    color: #55595C;
+    font-weight: 500;
+    font-size: 18px;
+}
