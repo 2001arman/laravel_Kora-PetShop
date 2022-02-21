@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('kora');
+    return view('index');
 });
 
-
+Route::get('/masuk', function () {
+    return view('masuk');
+});
