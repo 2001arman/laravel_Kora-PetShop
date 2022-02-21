@@ -15,44 +15,7 @@
   <body>
     <header>
       <!-- navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light fixed-top border-bottom" style="background-color: white;">
-        <div class="container-fluid">
-          <a class="navbar-brand ms-5 me-auto" href="#"><img src="{{url('img/logo-small.png')}}" alt="logo" width="100"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse container-fluid" id="navbarNavDropdown">
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="#">Hubungi Kami</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Layanan
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Pet Hotel</a></li>
-                  <li><a class="dropdown-item" href="#">Makanan</a></li>
-                  <li><a class="dropdown-item" href="#">Obat</a></li>
-                  <li><a class="dropdown-item" href="#">Perlengkapan</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="navbar-brand me-5 fs-6">
-                <a class="nav-link active" aria-current="page" href="#">Masuk
-                  <img class="d-inline " src="{{url('img/icon_arrow.png')}}" width="20" alt="arrow" srcset="">
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      @include('navbar')
       <!-- akhir navbar -->
     </header>
 
@@ -77,7 +40,7 @@
       <div class="container-fluid mt-3 mb-5 pb-5">
         <p class="text-center">LAYANAN</p>
         <h2 class="text-center">Layanan-Layanan yang Kami<br>Sediakan untuk Pelanggan Kami</h2>
-        <div class="d-md-flex flex-row justify-content-around px-5 mt-4">
+        <div class="d-md-flex flex-row justify-content-around px-5 mt-5">
           <div class="myCard">
             <span class="nomor">01</span>
             <img class="mx-3" src="{{url('img/icon_hotel.png')}}" alt="hotel" srcset="">
@@ -105,7 +68,9 @@
       <!-- akhir layanan -->
     </main>
     
-
+    <!-- footer -->
+    @include('footer')
+    <!-- akhir footer -->
 
 
     <!-- Optional JavaScript; choose one of the two! -->
