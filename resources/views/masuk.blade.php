@@ -25,7 +25,7 @@
           <div class="col my-auto">
             <img src="{{url('img/big_logo.png')}}" alt="">
           </div>
-          <div class="col">
+          <div class="col px-4">
             <div class="formCard border mt-5">
               <p class="text-center fw-bold fs-5">Masuk</p>
               <div class="form-floating mb-4">
@@ -51,7 +51,7 @@
               </div>
               <button type="button" class="myButton my-4 fluid">Masuk</button>
               <div class="border chaptcha mb-4"></div>
-              <p>Belum punya akun? <a href="#" class="fw-bold">Daftar</a></p>
+              <p>Belum punya akun? <a href="/daftar" class="fw-bold">Daftar</a></p>
             </div>
           </div>
         </div>

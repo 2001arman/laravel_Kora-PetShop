@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top border-bottom" style="background-color: white;">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top border-bottom px-3" style="background-color: white;">
     <div class="container-fluid">
       <a class="navbar-brand ms-5 me-auto" href="#"><img src="{{url('img/logo-small.png')}}" alt="logo" width="100"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
