@@ -64,6 +64,10 @@ a{
     padding: 50px;
 }
 
+.default-radius{
+    border-radius: 24px;
+}
+
 .chaptcha{
     width: 300px;
     border-radius: 12px;
@@ -89,4 +93,17 @@ a{
 
 .fluid{
     width: 100% !important;
+}
+
+
+.fw-semiBold{
+    font-weight: 600;
+}
+
+.color-success{
+    color: #30A487;
+}
+
+.color-danger{
+    color: #D52A3B;
 }
