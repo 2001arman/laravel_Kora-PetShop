@@ -20,3 +20,11 @@ Route::get('/', function () {
 Route::get('/masuk', function () {
     return view('masuk');
 });
+
+Route::get('/daftar', function () {
+    return view('daftar');
+});
+
+Route::get('/profile', function () {
+    return view('profile/profile');
+});
