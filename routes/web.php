@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,8 +34,25 @@ Route::get('logout', [LoginController::class, 'actionlogout'])->name('actionlogo
 
 Route::post('actiondaftar', [RegisterController::class, 'create'])->name('actiondaftar');
 
-Route::get('/admin', function () {
-    return view('/admin/admin');
+Route::get('/admin', [BarangController::class, 'index']);
+
+Route::get('/admin/tambah', [BarangController::class, 'tambah']);
+
+Route::post('/admin/store', [BarangController::class, 'store'])->name('actionstore');
+
+Route::get('/admin/hapus/{id}', [BarangController::class, 'hapus']);
+
+Route::get('/admin/edit/{id}', [BarangController::class, 'edit']);
+
+Route::post('/admin/update', [BarangController::class, 'update']);
+
+
+// Route::get('/admin', function () {
+//     return view('/admin/admin');
+// });
+
+Route::get('/admin/tambah', function () {
+    return view('/admin/tambah');
 });
 
 Route::get('/daftar', function () {
