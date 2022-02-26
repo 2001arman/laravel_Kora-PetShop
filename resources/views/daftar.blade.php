@@ -28,28 +28,30 @@
           <div class="col px-4">
             <div class="formCard border mt-5">
               <p class="text-center fw-bold fs-5">Daftar</p>
+              <form action="{{ route('actiondaftar') }}" method="post">
+              @csrf 
               <div class="form-floating mb-4">
-                <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com">
+                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="username">
                 <label for="floatingInput" class="text-secondary px-4">Username</label>
               </div>
               <div class="form-floating mb-4">
-                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Budi Utomo">
+                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Budi Utomo" name="name">
                 <label for="floatingInput" class="text-secondary px-4">Nama</label>
               </div>
               <div class="form-floating mb-4">
-                <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com">
+                <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="email">
                 <label for="floatingInput" class="text-secondary px-4">Email</label>
               </div>
               <div class="form-floating mb-4">
-                <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Samarinda">
+                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Samarinda" name="alamat">
                 <label for="floatingInput" class="text-secondary px-4">Alamat</label>
               </div>
               <div class="form-floating mb-4">
-                <input type="number" class="form-control rounded-pill px-4" id="floatingInput" placeholder="0821209087">
+                <input type="number" class="form-control rounded-pill px-4" id="floatingInput" placeholder="0821209087" name="no_hp" >
                 <label for="floatingInput" class="text-secondary px-4">No HP</label>
               </div>
               <div class="form-floating mb-4">
-                <input type="password" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com">
+                <input type="password" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="password">
                 <label for="floatingInput" class="text-secondary px-4">Password</label>
               </div>
               <div class="form-floating">
@@ -69,7 +71,7 @@
                   </div>
                 </div>
               </div>
-              <button type="button" class="myButton my-4 fluid">Daftar</button>
+              <button type="submit" class="myButton my-4 fluid">Daftar</button>
               <div class="border chaptcha mb-4"></div>
               <p>Sudah punya akun? <a href="/masuk" class="fw-bold">Masuk</a></p>
             </div>
