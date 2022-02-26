@@ -28,28 +28,41 @@
           <div class="col px-4">
             <div class="formCard border mt-5">
               <p class="text-center fw-bold fs-5">Masuk</p>
-              <div class="form-floating mb-4">
-                <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput" class="text-secondary px-4">Username</label>
-              </div>
-              <div class="form-floating">
-                <input type="password" class="form-control rounded-pill px-4" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword" class="text-secondary px-4">Password</label>
-              </div>
-              <div class="border mt-4 px-4 py-2 chaptcha">
-                <p class="fw-bold fs-4 mt-1">ABCD</p>
-                <p>Ketik huruf di atas</p>
-                <div class="d-flex">
-                  <div class="form-floating mb-3">
-                    <input type="email" class="form-control px-4 " id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput" class="text-secondary px-4">Masukkan</label>
-                  </div>
-                  <div class="refresh">
-                    <img src="{{url('img/icon_refresh.png')}}" alt="refresh" width="20px">
+              @if(session('error'))
+                <div class="alert alert-danger">
+                    <b>Opps!</b> {{session('error')}}
+                </div>
+              @endif
+              @if(session('berhasil'))
+                <div class="alert alert-danger">
+                    <b>Opps!</b> {{session('berhasil')}}
+                </div>
+              @endif
+              <form action="{{ route('actionlogin') }}" method="post">
+              @csrf 
+                <div class="form-floating mb-4">
+                  <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="email">
+                  <label for="floatingInput" class="text-secondary px-4">Username</label>
+                </div>
+                <div class="form-floating">
+                  <input type="password" class="form-control rounded-pill px-4" id="floatingPassword" placeholder="Password" name="password">
+                  <label for="floatingPassword" class="text-secondary px-4">Password</label>
+                </div>
+                <div class="border mt-4 px-4 py-2 chaptcha">
+                  <p class="fw-bold fs-4 mt-1">ABCD</p>
+                  <p>Ketik huruf di atas</p>
+                  <div class="d-flex">
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control px-4 " id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput" class="text-secondary px-4">Masukkan</label>
+                    </div>
+                    <div class="refresh">
+                      <img src="{{url('img/icon_refresh.png')}}" alt="refresh" width="20px">
+                    </div>
                   </div>
                 </div>
-              </div>
-              <button type="button" class="myButton my-4 fluid">Masuk</button>
+                <button type="submit"  class="myButton my-4 fluid">Masuk</button>
+              </form>
               <div class="border chaptcha mb-4"></div>
               <p>Belum punya akun? <a href="/daftar" class="fw-bold">Daftar</a></p>
             </div>
