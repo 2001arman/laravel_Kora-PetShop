@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,22 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 Route::get('/masuk', function () {
     return view('masuk');
+});
+
+Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
+
+Route::get('logout', [LoginController::class, 'actionlogout'])->name('actionlogout');
+
+Route::post('actiondaftar', [RegisterController::class, 'create'])->name('actiondaftar');
+
+Route::get('/admin', function () {
+    return view('/admin/admin');
 });
 
 Route::get('/daftar', function () {
@@ -27,4 +43,8 @@ Route::get('/daftar', function () {
 
 Route::get('/profile', function () {
     return view('profile/profile');
+});
+
+Route::get('/profile/edit', function () {
+    return view('profile/edit');
 });
