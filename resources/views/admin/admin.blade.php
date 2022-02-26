@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('css/style.css')}}">
     <link rel="shortcut icon" href="{{url('img/logo-small.png')}}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
     <title>Admin Korashop</title>
   </head>
@@ -21,33 +22,47 @@
 
     <main>
       <div class="container-fluid my-5 py-5 px-5">
+        <a href="/admin/tambah" class="display-block"><button type="button" class="myButton my-4 mx-auto display-block">Tambah Barang</button></a>
+        @if(session('barangError'))
+        <div class="alert alert-danger">
+            <b>Opps!</b> {{session('barangError')}}
+        </div>
+        @endif
+        @if(session('barangSuccess'))
+        <div class="alert alert-primary">
+            <b>Opps!</b> {{session('barangSuccess')}}
+        </div>
+        @endif
         <table class="table my-3">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Gambar</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Deskripsi</th>
+                <th scope="col">Harga</th>
+                <th scope="col">Stok</th>
+                <th scope="col">Jenis</th>
               </tr>
             </thead>
             <tbody>
+              <p style="display: none;">{{$i=1}}</p>
+              @foreach($barang as $b)
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row">{{$i}}</th>
+                <td> <img src="{{$b->gambar}}" alt="{{$b->nama}}" width="200px"></td>
+                <td>{{$b->nama}}</td>
+                <td>{{$b->deskripsi}}</td>
+                <td>{{$b->harga}}</td>
+                <td>{{$b->stok}}</td>
+                <td>{{$b->jenis}}</td>
+                <td>
+                  <a href="/admin/edit/{{$b->id}}" class="me-2"><i class="bi bi-pencil"></i></a>
+                  <a href="/admin/hapus/{{$b->id}}"><i class="bi bi-trash"></i></a>
+                </td>
               </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              <p style="display: none;">{{$i++}}</p>
+              @endforeach
             </tbody>
           </table>
       </div>
