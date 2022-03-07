@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('css/style.css')}}">
     <link rel="shortcut icon" href="{{url('img/logo-small.png')}}" type="image/x-icon">
+    <script type="text/javascript" src="{{ url('js/app.js') }}"></script>
 
     <title>Masuk</title>
   </head>
@@ -38,7 +39,7 @@
                     <b>Opps!</b> {{session('berhasil')}}
                 </div>
               @endif
-              <form action="{{ route('actionlogin') }}" method="post">
+               <form id="form_regis" action="{{ route('actionlogin') }}" method="post"> <!-- aku kasih id disini-->
               @csrf 
                 <div class="form-floating mb-4">
                   <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="email">
@@ -49,19 +50,20 @@
                   <label for="floatingPassword" class="text-secondary px-4">Password</label>
                 </div>
                 <div class="border mt-4 px-4 py-2 chaptcha">
-                  <p class="fw-bold fs-4 mt-1">ABCD</p>
+                  <p id="captcha" class="fw-bold fs-4 mt-1"><script>generateCaptcha();</script></p>
                   <p>Ketik huruf di atas</p>
                   <div class="d-flex">
                     <div class="form-floating mb-3">
-                      <input type="email" class="form-control px-4 " id="floatingInput" placeholder="name@example.com">
+                      <input type="text" class="form-control px-4 " id="theCaptcha" placeholder="name@example.com">
                       <label for="floatingInput" class="text-secondary px-4">Masukkan</label>
                     </div>
                     <div class="refresh">
-                      <img src="{{url('img/icon_refresh.png')}}" alt="refresh" width="20px">
+                    <a onclick="generateCaptcha()"><img src="{{url('img/icon_refresh.png')}}" alt="refresh" width="20px"></a>
                     </div>
                   </div>
                 </div>
-                <button type="submit"  class="myButton my-4 fluid">Masuk</button>
+                <button type="button"  class="myButton my-4 fluid" onclick="validateCaptcha()">Masuk</button>
+                <div id="errorMsg" class="errmsg"></div><!-- jangan lupa dihapus -->
               </form>
               <div class="border chaptcha mb-4"></div>
               <p>Belum punya akun? <a href="/daftar" class="fw-bold">Daftar</a></p>
@@ -80,6 +82,7 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url('js/app.js') }}"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
