@@ -19,15 +19,15 @@
       @include('navbar')
       <!-- akhir navbar -->
     </header>
-
+    @foreach($user as $u)
     <main>
       <div class="container-fluid my-5 py-3 px-5">
         <div class="row mt-5 pt-3 pe-5">
           <div class="col-4 text-center px-5 ">
             <img class="mx-auto mb-4 rounded-circle" src="{{url('img/image_avatar.png')}}" alt="avatar" srcset="" width="230px">
-            <h2>John Doe</h2>
+            <h2>{{ $u->nama }}</h2>
             <p class="fw-light">Member</p>
-            <button type="button" class="myButton fluid"> <i class="bi bi-pencil-fill me-1"></i> Edit Profile</button>
+            <button type="button" class="myButton fluid" onclick="location.href='/profile/edit/'"> <i class="bi bi-pencil-fill me-1"></i> Edit Profile</button>
           </div>
           <div class="col-8 border default-radius p-4">
               <p class="fs-5 fw-semiBold">Pembelian Saya</p>
@@ -65,6 +65,7 @@
           </div>
         </div>
       </div>
+      @endforeach
     </main>
     
     <!-- footer -->
