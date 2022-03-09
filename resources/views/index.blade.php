@@ -41,24 +41,24 @@
         <p class="text-center">LAYANAN</p>
         <h2 class="text-center">Layanan-Layanan yang Kami<br>Sediakan untuk Pelanggan Kami</h2>
         <div class="d-md-flex flex-row justify-content-around px-5 mt-5">
-          <div class="myCard">
+          <div class="myCard" onclick="location.href='/hotel'">
             <span class="nomor">01</span>
             <img class="mx-3" src="{{url('img/icon_hotel.png')}}" alt="hotel" srcset="">
             <span class="layanan">PET HOTEL</span>
           </div>
-          <div class="myCard">
+          <div class="myCard" onclick="location.href='/obat'">
             <span class="nomor">03</span>
             <img class="mx-3" src="{{url('img/icon_obat.png')}}" alt="obat" srcset="">
             <span class="layanan">OBAT</span>
           </div>
         </div>
         <div class="d-md-flex flex-row justify-content-around px-5 mt-4">
-          <div class="myCard">
+          <div class="myCard" onclick="location.href='/makanan'">
             <span class="nomor">02</span>
             <img class="mx-3" src="{{url('img/icon_makanan.png')}}" alt="makanan" srcset="">
             <span class="layanan">MAKANAN</span>
           </div>
-          <div class="myCard">
+          <div class="myCard" onclick="location.href='/perlengkapan'">
             <span class="nomor">04</span>
             <img class="mx-3" src="{{url('img/icon_perlengkapan.png')}}" alt="perlengkapan" srcset="">
             <span class="layanan">PERLENGKAPAN</span>
