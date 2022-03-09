@@ -66,3 +66,11 @@ Route::get('/profile', function () {
 Route::get('/profile/edit', function () {
     return view('profile/edit');
 });
+
+Route::get('/hotel', function(){
+    return view('hotel');
+});
+
+Route::get('/makanan', function(){
+    return view('/barang/makanan');
+});
