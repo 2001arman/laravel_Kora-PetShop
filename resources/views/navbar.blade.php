@@ -26,13 +26,23 @@
         </ul>
       </div>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="navbar-brand me-5 fs-6">
-            <a class="nav-link active" aria-current="page" href="/masuk">Masuk
-              <img class="d-inline " src="{{url('img/icon_arrow.png')}}" width="20" alt="arrow" srcset="">
-            </a>
-          </li>
-        </ul>
+        @if(session()->has('user'))
+          <ul class="navbar-nav">
+            <li class="navbar-brand me-5 fs-6">
+              <a class="nav-link active" aria-current="page" href="/profile">{{ session()->get('user')['nama'] }}
+                <img class="d-inline " src="{{url('img/icon_arrow.png')}}" width="20" alt="arrow" srcset="">
+              </a>
+            </li>
+          </ul>
+        @else
+          <ul class="navbar-nav">
+            <li class="navbar-brand me-5 fs-6">
+              <a class="nav-link active" aria-current="page" href="/masuk">Masuk
+                <img class="d-inline " src="{{url('img/icon_arrow.png')}}" width="20" alt="arrow" srcset="">
+              </a>
+            </li>
+          </ul>
+        @endif
       </div>
     </div>
   </nav>
