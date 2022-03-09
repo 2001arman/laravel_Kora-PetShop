@@ -29,34 +29,39 @@
           <div class="col px-4">
             <div class="formCard border mt-5">
               <p class="text-center fw-bold fs-5">Daftar</p>
+              @if(session('error'))
+                <div class="alert alert-danger">
+                    <b>Opps!</b> {{session('error')}}
+                </div>
+              @endif
               <form id="form_regis" action="{{ route('actiondaftar') }}" method="post">
               @csrf 
               <div class="form-floating mb-4">
-                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="username">
+                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="username" required>
                 <label for="floatingInput" class="text-secondary px-4">Username</label>
               </div>
               <div class="form-floating mb-4">
-                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Budi Utomo" name="name">
+                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Budi Utomo" name="name" required>
                 <label for="floatingInput" class="text-secondary px-4">Nama</label>
               </div>
               <div class="form-floating mb-4">
-                <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="email">
+                <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="email" required>
                 <label for="floatingInput" class="text-secondary px-4">Email</label>
               </div>
               <div class="form-floating mb-4">
-                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Samarinda" name="alamat">
+                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Samarinda" name="alamat" required>
                 <label for="floatingInput" class="text-secondary px-4">Alamat</label>
               </div>
               <div class="form-floating mb-4">
-                <input type="number" class="form-control rounded-pill px-4" id="floatingInput" placeholder="0821209087" name="no_hp" >
+                <input type="number" class="form-control rounded-pill px-4" id="floatingInput" placeholder="0821209087" name="no_hp" required>
                 <label for="floatingInput" class="text-secondary px-4">No HP</label>
               </div>
               <div class="form-floating mb-4">
-                <input type="password" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="password">
+                <input type="password" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="password" required>
                 <label for="floatingInput" class="text-secondary px-4">Password</label>
               </div>
               <div class="form-floating">
-                <input type="password" class="form-control rounded-pill px-4" id="floatingPassword" placeholder="Password">
+                <input type="password" class="form-control rounded-pill px-4" id="floatingPassword" placeholder="Password" name="confirm-password" required>
                 <label for="floatingPassword" class="text-secondary px-4">Konfirmasi Password</label>
               </div>
               <div class="border mt-4 px-4 py-2 chaptcha">
