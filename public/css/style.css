@@ -112,3 +112,35 @@ a{
 .display-block{
     display: block;
 }
+
+.myCardBarang{
+    width: 200px;
+    height: 300px;
+    max-height: 350px;
+}
+
+.myCardBarang img{
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+}
+
+.myCardBarang .stok{
+    background-color: #E5F3F2;
+    color: #3E605E;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 5px;
+}
+
+.myCardBarang .nama{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.myCardBarang .harga{
+    color: #939598;
+    font-size: 14px;
+}
