@@ -43,7 +43,7 @@
               @csrf 
                 <div class="form-floating mb-4">
                   <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="email">
-                  <label for="floatingInput" class="text-secondary px-4">Username</label>
+                  <label for="floatingInput" class="text-secondary px-4">Email</label>
                 </div>
                 <div class="form-floating">
                   <input type="password" class="form-control rounded-pill px-4" id="floatingPassword" placeholder="Password" name="password">
