@@ -72,4 +72,28 @@ class BarangController extends Controller
 
         return redirect('/admin');
     }
+
+    public function makanan(){
+        //mengambil data dari table barang
+        $barang = DB::table('barang')->where('jenis', 'makanan')->get();
+
+        // mengirim data barang makanan ke halaman makanan
+        return view('/barang/makanan', ['barang' => $barang]);
+    }
+
+    public function obat(){
+        //mengambil data dari table barang
+        $barang = DB::table('barang')->where('jenis', 'obat')->get();
+
+        // mengirim data barang obat ke halaman obat
+        return view('/barang/obat', ['barang' => $barang]);
+    }
+
+    public function perlengkapan(){
+        //mengambil data dari table barang
+        $barang = DB::table('barang')->where('jenis', 'perlengkapan')->get();
+
+        // mengirim data barang perlengkapan ke halaman perlengkapan
+        return view('/barang/perlengkapan', ['barang' => $barang]);
+    }
 }
