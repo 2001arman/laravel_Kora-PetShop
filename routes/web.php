@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,10 +48,6 @@ Route::get('/admin/edit/{id}', [BarangController::class, 'edit']);
 Route::post('/admin/update', [BarangController::class, 'update']);
 
 
-// Route::get('/admin', function () {
-//     return view('/admin/admin');
-// });
-
 Route::get('/admin/tambah', function () {
     return view('/admin/tambah');
 });
@@ -59,18 +56,16 @@ Route::get('/daftar', function () {
     return view('daftar');
 });
 
-Route::get('/profile', function () {
-    return view('profile/profile');
-});
+Route::get('/profile', [ProfileController::class, 'getUser']);
 
-Route::get('/profile/edit', function () {
-    return view('profile/edit');
-});
+Route::get('/profile/edit', [ProfileController::class, 'getEdit']);
 
 Route::get('/hotel', function(){
     return view('hotel');
 });
 
-Route::get('/makanan', function(){
-    return view('/barang/makanan');
-});
+Route::get('/makanan', [BarangController::class, 'makanan'] );
+
+Route::get('/obat', [BarangController::class, 'obat'] );
+
+Route::get('/perlengkapan', [BarangController::class, 'perlengkapan'] );
