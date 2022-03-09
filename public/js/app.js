@@ -1,4 +1,3 @@
-console.log("tes")
 let captcha = new Array();
 
 function generateCaptcha() {
