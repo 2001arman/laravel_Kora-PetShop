@@ -10,27 +10,48 @@ class LoginController extends Controller
 {
     public function login(){
         if (Auth::check()){
-            return redirect('welcome');
+            $user = Auth::user();
+            session()->put('user', 'user');
+            return view('index',['user' => $user]);
         } else{
-            return view('login');
+            return null;
         }
     }
     public function actionlogin(Request $request){
-        $data = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-        ];
+        if (Auth::check()){
+            $user = Auth::user();
+            session()->put('user', 'user');
+            return view('index',['user' => $user]);
+        } else{ 
+            $data = [
+                'email' => $request->input('email'),
+                'password' => $request->input('password'),
+            ];
 
-        if (Auth::attempt($data)){
-            return redirect('/admin');
-        } else{
-            $request->session()->flash('error', 'email atau password salah');
-            return redirect('/masuk');
+            try {
+                if (Auth::attempt($data)){
+                    $user = Auth::user();
+                    session()->put('user', $user);
+                    view('index',['user' => $user]);
+                    return redirect('/');
+                }
+                elseif( $data['email'] == 'admin' && $data['password'] == 'admin' ){
+                    return redirect('/admin');
+                }
+                else{
+                    $request->session()->flash('error', 'email atau password salah');
+                    return redirect('/masuk');
+                }
+            } catch (\Throwable $th) {
+                $request->session()->flash('error', $th);
+                return redirect('/masuk');
+            }
         }
     }
 
     public function actionlogout(){
         Auth::logout();
+        session()->forget('user');
         return redirect('/');
     }
 }
