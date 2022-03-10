@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -28,8 +29,13 @@ class ProfileController extends Controller
                 'alamat' => $request->alamat,
                 'no_hp' => $request->no_hp,
             ]);
+            $user = Auth::user();
+            session()->put('user', $user);
+            $request->session()->flash('updateSuccess', 'Berhasil mengubah data profile');
+            return redirect('/profile/edit');
         } catch (\Throwable $th) {
-            //throw $th;
+            $request->session()->flash('updateError', 'gagal mengubah data profile');
+            return redirect('/profile/edit');
         }
     }
 }
