@@ -60,6 +60,8 @@ Route::get('/profile', [ProfileController::class, 'getUser']);
 
 Route::get('/profile/edit', [ProfileController::class, 'getEdit']);
 
+Route::post('/profile/update', [ProfileController::class, 'updateProfile']);
+
 Route::get('/hotel', function(){
     return view('hotel');
 });

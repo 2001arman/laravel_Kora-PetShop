@@ -24,32 +24,46 @@
       @foreach ($user as $u)
       <div class="my-5 py-5 px-5">
         <div class="container-edit mt-4 mx-auto py-4 px-5 border default-radius">
-            <p class="text-center fw-semiBold fs-6">Edit Profile</p>
+          <p class="text-center fw-semiBold fs-6">Edit Profile</p>
+          @if(session('updateError'))
+          <div class="alert alert-danger">
+              <b>Opps!</b> {{session('updateError')}}
+          </div>
+          @endif
+          @if(session('updateSuccess'))
+          <div class="alert alert-primary">
+              <b>Opps!</b> {{session('updateSuccess')}}
+          </div>
+          @endif
+          <form action="/profile/update" method="post">
+            @csrf
             <img class="mx-auto mb-4 rounded-circle display-block" src="{{url('img/image_avatar.png')}}" alt="avatar" srcset="" width="230px">
             <button type="button" class="mx-auto myButton fluid display-block mb-5 fw-semiBold" style="width: 230px!important; background-color: #7CC1BC!important;"> <i class="bi bi-upload me-1"></i> Upload Foto</button>
             <!-- form -->
+            <input type="hidden" name="id" value="{{ $u->id }}">
             <div class="form-floating mb-4">
-                <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" value="{{ $u->username }}">
-                <label for="floatingInput" class="text-secondary px-4">Username</label>
-              </div>
-              <div class="form-floating mb-4">
-                <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Budi Utomo" value="{{ $u->nama }}">
-                <label for="floatingInput" class="text-secondary px-4">Nama</label>
-              </div>
-              <div class="form-floating mb-4">
-                <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" value="{{ $u->email }}">
-                <label for="floatingInput" class="text-secondary px-4">Email</label>
-              </div>
-              <div class="form-floating mb-4">
-                <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Samarinda" value="{{ $u->alamat }}">
-                <label for="floatingInput" class="text-secondary px-4">Alamat</label>
-              </div>
-              <div class="form-floating mb-4">
-                <input type="number" class="form-control rounded-pill px-4" id="floatingInput" placeholder="0821209087" value="{{ $u->no_hp }}">
-                <label for="floatingInput" class="text-secondary px-4">No HP</label>
-              </div>
+              <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="username" value="{{ $u->username }}" required>
+              <label for="floatingInput" class="text-secondary px-4">Username</label>
+            </div>
+            <div class="form-floating mb-4">
+              <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Budi Utomo" name="nama" value="{{ $u->nama }}" required>
+              <label for="floatingInput" class="text-secondary px-4">Nama</label>
+            </div>
+            <div class="form-floating mb-4">
+              <input type="email" class="form-control rounded-pill px-4" id="floatingInput" placeholder="name@example.com" name="email" value="{{ $u->email }}" required>
+              <label for="floatingInput" class="text-secondary px-4">Email</label>
+            </div>
+            <div class="form-floating mb-4">
+              <input type="text" class="form-control rounded-pill px-4" id="floatingInput" placeholder="Samarinda" name="alamat" value="{{ $u->alamat }}" required>
+              <label for="floatingInput" class="text-secondary px-4">Alamat</label>
+            </div>
+            <div class="form-floating mb-4">
+              <input type="number" class="form-control rounded-pill px-4" id="floatingInput" name="no_hp" placeholder="0821209087" value="{{ $u->no_hp }}" required>
+              <label for="floatingInput" class="text-secondary px-4">No HP</label>
+            </div>
             <!-- akhir form -->
-            <button type="button" class="myButton mb-4 fluid">Simpan</button>
+            <button type="submit" class="myButton mb-4 fluid">Simpan</button>
+          </form>
         </div>
       </div>
       @endforeach

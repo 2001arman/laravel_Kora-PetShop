@@ -24,10 +24,10 @@
         </div>
         <div class="col-3 ">
           <p class="fw-bold">Layanan Kami</p>
-          <a href="" ><span>Pet Hotel</span></a><br>
-          <a href="" ><span> Makanan</span> </a> <br>
-          <a href="" ><span>Obat</span> </a> <br>
-          <a href="" ><span>Perlengkapan</span></a>
+          <a href="/hotel" ><span>Pet Hotel</span></a><br>
+          <a href="/makanan" ><span> Makanan</span> </a> <br>
+          <a href="/obat" ><span>Obat</span> </a> <br>
+          <a href="/perlengkapan" ><span>Perlengkapan</span></a>
         </div>
       </div>
     </div>
