@@ -144,3 +144,7 @@ a{
     color: #939598;
     font-size: 14px;
 }
+
+.carousel-img {
+    border-radius: 12px;
+}
