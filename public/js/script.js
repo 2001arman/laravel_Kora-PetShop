@@ -1,4 +1,5 @@
 $('.owl-carousel').owlCarousel({
+  autoplay: true,
   loop: true,
   margin: 20,
   stagePadding: 180,
