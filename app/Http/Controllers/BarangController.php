@@ -96,4 +96,10 @@ class BarangController extends Controller
         // mengirim data barang perlengkapan ke halaman perlengkapan
         return view('/barang/perlengkapan', ['barang' => $barang]);
     }
+
+    public function getDetail($id){
+        $barang = DB::table('barang')->where('id', $id)->get();
+        $allBarang = DB::table('barang')->inRandomOrder()->get();
+        return view('/barang/detail')->with('barang', $barang)->with('allBarang', $allBarang);
+    }
 }
