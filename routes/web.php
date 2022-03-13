@@ -71,3 +71,5 @@ Route::get('/makanan', [BarangController::class, 'makanan'] );
 Route::get('/obat', [BarangController::class, 'obat'] );
 
 Route::get('/perlengkapan', [BarangController::class, 'perlengkapan'] );
+
+Route::get('/detail/{id}', [BarangController::class, 'getDetail']);
