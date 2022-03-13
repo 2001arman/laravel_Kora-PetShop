@@ -42,19 +42,13 @@
     <!-- corousel banner -->
     <div class="mt-5 mx-3 pt-5 px-5 d-flex flex-wrap justify-content-between ">
       @foreach($barang as $b)
-      <div class="myCardBarang mb-4 me-3">
+      <div class="myCardBarang mb-4 me-3" onclick="location.href='/detail/{{ $b->id }}'">
         <img class="mb-1" src="{{ $b->gambar }}" alt="{{ $b->nama }}"> <br>
         <span class="stok">Stok Tersedia</span>
         <p class="mb-0 mt-1 nama">{{ $b->nama }}</p>
-        <span class="harga">Rp {{ $b->harga }}</span>
+        <span class="harga">Rp {{ number_format($b->harga , 0, ',', '.') }}</span>
       </div>
       @endforeach
-      <!-- <div class="myCardBarang ">
-                <img src="{{ url('img/Alpo.jpg') }}" alt="alpo"> <br>
-                <span class="stok" >Stok Tersedia</span>
-                <p class="mb-0 mt-1 nama">Alpo Beef Liver 2.5 Kg</p>
-                <span class="harga">Rp 45.000</span>
-            </div> -->
     </div>
   </main>
 
