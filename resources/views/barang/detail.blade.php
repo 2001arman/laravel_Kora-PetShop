@@ -1,3 +1,4 @@
+@foreach($barang as $b)
 <!doctype html>
 <html lang="en">
 
@@ -14,7 +15,7 @@
   <link rel="stylesheet" href="{{url('css/owl.theme.default.css')}}">
   <link rel="shortcut icon" href="{{url('img/logo-small.png')}}" type="image/x-icon">
 
-  <title>Kora Pet Hotel</title>
+  <title>Korashop | {{ $b->nama}}</title>
 </head>
 
 <body>
@@ -25,19 +26,42 @@
   </header>
 
   <main class="py-5">
-    @foreach($barang as $b)
+    
     <div class="row mt-5 mx-3 pt-5 justify-content-evenly">
         <div class="col-5 ">
             <img class="mb-1 radius12" src="{{ $b->gambar }}" alt="{{ $b->nama }}" width="100%"> <br>
         </div>
         <div class="col-5 ">
+            @if(session('error'))
+              <div class="alert alert-danger">
+                  <b>Opps!</b> {{session('error')}}
+              </div>
+            @endif
             <span class="stok">Stok Tersedia</span>
             <p class="fs-4 fw-semiBold mt-2 mb-1">{{ $b->nama }}</p>
             <p class="harga fs-6 mb-3">Rp {{ number_format($b->harga , 0, ',', '.') }}</p>
             <p class="lh-lg">{{ $b->deskripsi }}</p>
-            <button type="button" class="myButton my-4 fluid"><img src="{{ url('img/icon_shop.png') }}" alt="icon keranjang">  Beli Sekarang</button>
+            <p style="display: none;">{{ $user = session()->get('user')['id'] }}</p>
+            <a href="{{ route('keranjang.store', ['barang'=>$b->id, 'user'=>$user]) }}" class="fluid">
+              <button type="button" class="myButton my-4 fluid" hre><img src="{{ url('img/icon_shop-white.png') }}" alt="icon keranjang">  Beli Sekarang</button>
+            </a>
             <button type="button" class="myButton secondaryColor fluid"><img src="{{ url('img/icon_WA.png') }}" alt="icon whatsapp">  Kirim Pesan ke Kora Petshop?</button>
-            <button type="button" class=" float"><img src="{{ url('img/icon_WA.png') }}" alt="icon whatsapp">  Kirim Pesan ke Kora Petshop?</button>
+            <!-- floating button -->
+            <button type="button" class="d-flex align-content-center flex-wrap float px-3" >
+              <div class="circle-shop d-flex">
+                <img src="{{ url('img/icon_shop-dark.png') }}" alt="icon whatsapp">
+                <div class="circle-shop-number">
+                  <span>1</span>
+                </div>
+              </div>
+              <div class="ms-4 text-start flex-fill">
+                <p class="mb-0">1 Barang di Keranjang</p>
+                <span class="mt-0 harga">Rp 45.000</span>
+              </div>
+              <div class="mt-2">
+                <img src="{{ url('img/icon_shop-arrow.png') }}" alt="arrow">
+              </div>
+            </button>
         </div>
     @endforeach
     </div>
