@@ -160,14 +160,31 @@ a{
 
 .float{
 	position:fixed;
-	width:40%;
-	/* height:60px; */
+	width:30%;
+    font-weight: 600;
 	bottom:20px;
-	/* right:auto; */
-    left: 35%;
-	background-color:#0C9;
+    left: 38%;
+	background-color:#E5F3F2;
 	color:#FFF;
-	border-radius:50px;
+	border-radius: 12px;
 	text-align:center;
-	box-shadow: 2px 2px 3px #999;
+	height: 64px;
+    border: none;
+    box-shadow: 2px 10px 18px 2px rgba(81,105,117,0.18);
+    color: #55595C;
+}
+
+.circle-shop{
+    background-color: rgba(83, 129, 125, 0.2);
+    border-radius: 24px;
+    padding: 10px;
+}
+
+.circle-shop-number{
+    background-color: #DA4453;
+    color: white;
+    border-radius: 24px;
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
 }
