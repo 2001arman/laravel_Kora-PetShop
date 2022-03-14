@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -73,3 +74,5 @@ Route::get('/obat', [BarangController::class, 'obat'] );
 Route::get('/perlengkapan', [BarangController::class, 'perlengkapan'] );
 
 Route::get('/detail/{id}', [BarangController::class, 'getDetail']);
+
+Route::get('/keranjang/store/{barang}/{user}', [KeranjangController::class, 'store'])->name('keranjang.store');
