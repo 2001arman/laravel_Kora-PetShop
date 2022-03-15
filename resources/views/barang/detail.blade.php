@@ -46,14 +46,19 @@
             <p class="fs-4 fw-semiBold mt-2 mb-1">{{ $b->nama }}</p>
             <p class="harga fs-6 mb-3">Rp {{ number_format($b->harga , 0, ',', '.') }}</p>
             <p class="lh-lg">{{ $b->deskripsi }}</p>
-            <p style="display: none;">{{ $user = session()->get('user')['id'] }}</p>
+            <p style="display: none;">
+              {{$user = 1}}
+              @if(session()->has('user'))
+                $user = session()->get('user')['id'];
+              @endif
+            </p>
             <a href="{{ route('keranjang.store', ['barang'=>$b->id, 'user'=>$user]) }}" class="fluid">
               <button type="button" class="myButton my-4 fluid" hre><img src="{{ url('img/icon_shop-white.png') }}" alt="icon keranjang">  Beli Sekarang</button>
             </a>
             <button type="button" class="myButton secondaryColor fluid"><img src="{{ url('img/icon_WA.png') }}" alt="icon whatsapp">  Kirim Pesan ke Kora Petshop?</button>
             <!-- floating button -->
             @if(session()->has('jumlah'))
-            <button type="button" class="d-flex align-content-center flex-wrap float px-3" >
+            <button type="button" class="d-flex align-content-center flex-wrap float px-3" onclick="location.href='/keranjang'">
               <div class="circle-shop d-flex">
                 <img src="{{ url('img/icon_shop-dark.png') }}" alt="icon whatsapp">
                 <div class="circle-shop-number">
