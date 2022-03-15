@@ -39,7 +39,7 @@
       <!-- corousel banner -->
       <!-- floating button -->
       @if(session()->has('jumlah'))
-      <button type="button" class="d-flex align-content-center flex-wrap float px-3" >
+      <button type="button" class="d-flex align-content-center flex-wrap float px-3" onclick="location.href='/keranjang'">
         <div class="circle-shop d-flex">
           <img src="{{ url('img/icon_shop-dark.png') }}" alt="icon whatsapp">
           <div class="circle-shop-number">
