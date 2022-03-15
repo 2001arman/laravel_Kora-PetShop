@@ -53,6 +53,7 @@ class LoginController extends Controller
                     return redirect('/');
                 }
                 elseif( $data['email'] == 'admin' && $data['password'] == 'admin' ){
+                    session()->put('admin', 'admin');
                     return redirect('/admin');
                 }
                 else{
@@ -68,6 +69,7 @@ class LoginController extends Controller
 
     public function actionlogout(){
         Auth::logout();
+        session()->forget('admin');
         session()->forget('user');
         session()->forget('jumlah');
         session()->forget('total');
