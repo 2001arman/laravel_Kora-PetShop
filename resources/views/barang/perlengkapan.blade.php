@@ -37,6 +37,25 @@
         </div>
       </div>
       <!-- corousel banner -->
+      <!-- floating button -->
+      @if(session()->has('jumlah'))
+      <button type="button" class="d-flex align-content-center flex-wrap float px-3" >
+        <div class="circle-shop d-flex">
+          <img src="{{ url('img/icon_shop-dark.png') }}" alt="icon whatsapp">
+          <div class="circle-shop-number">
+            <span>{{ session()->get('jumlah') }}</span>
+          </div>
+        </div>
+        <div class="ms-4 text-start flex-fill">
+          <p class="mb-0">{{ session()->get('jumlah') }} Barang di Keranjang</p>
+          <span class="mt-0 harga">Rp {{ number_format(session()->get('total') , 0, ',', '.') }}</span>
+        </div>
+        <div class="mt-2">
+          <img src="{{ url('img/icon_shop-arrow.png') }}" alt="arrow">
+        </div>
+      </button>
+      @endif
+      <!-- akhir floating -->
       <div class=" mt-5 mx-3 pt-5 px-5 d-flex flex-wrap justify-content-between ">
           @foreach($barang as $b)
           <div class="myCardBarang mb-4 me-3" onclick="location.href='/detail/{{ $b->id }}'">

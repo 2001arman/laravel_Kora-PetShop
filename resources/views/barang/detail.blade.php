@@ -37,6 +37,11 @@
                   <b>Opps!</b> {{session('error')}}
               </div>
             @endif
+            @if(session('berhasil'))
+            <div class="alert alert-primary">
+                <b>Yeay!</b> {{session('berhasil')}}
+            </div>
+            @endif
             <span class="stok">Stok Tersedia</span>
             <p class="fs-4 fw-semiBold mt-2 mb-1">{{ $b->nama }}</p>
             <p class="harga fs-6 mb-3">Rp {{ number_format($b->harga , 0, ',', '.') }}</p>
@@ -47,21 +52,24 @@
             </a>
             <button type="button" class="myButton secondaryColor fluid"><img src="{{ url('img/icon_WA.png') }}" alt="icon whatsapp">  Kirim Pesan ke Kora Petshop?</button>
             <!-- floating button -->
+            @if(session()->has('jumlah'))
             <button type="button" class="d-flex align-content-center flex-wrap float px-3" >
               <div class="circle-shop d-flex">
                 <img src="{{ url('img/icon_shop-dark.png') }}" alt="icon whatsapp">
                 <div class="circle-shop-number">
-                  <span>1</span>
+                  <span>{{ session()->get('jumlah') }}</span>
                 </div>
               </div>
               <div class="ms-4 text-start flex-fill">
-                <p class="mb-0">1 Barang di Keranjang</p>
-                <span class="mt-0 harga">Rp 45.000</span>
+                <p class="mb-0">{{ session()->get('jumlah') }} Barang di Keranjang</p>
+                <span class="mt-0 harga">Rp {{ number_format(session()->get('total') , 0, ',', '.') }}</span>
               </div>
               <div class="mt-2">
                 <img src="{{ url('img/icon_shop-arrow.png') }}" alt="arrow">
               </div>
             </button>
+            @endif
+            <!-- akhir floating -->
         </div>
     @endforeach
     </div>
