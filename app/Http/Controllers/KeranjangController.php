@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class KeranjangController extends Controller
@@ -65,5 +66,16 @@ class KeranjangController extends Controller
             session()->flash('error', $th->getMessage());
             return redirect("/detail/$barang");
         }
+    }
+
+    protected function getData(){
+        $idUser = session()->get('user')['id'];
+        $keranjang = DB::table('keranjang')->where('id_user', $idUser)->get();
+        $allBarang= new Collection();
+        foreach($keranjang as $k){
+            $barang = DB::table('barang')->where('id', $k->id_barang)->get();
+            $allBarang = $allBarang->merge($barang);
+        }
+        return view('barang/keranjang', ['keranjang' => $keranjang, 'allBarang' => $allBarang]);
     }
 }
