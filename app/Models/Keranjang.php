@@ -15,8 +15,8 @@ class Keranjang extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id-barang',
-        'id-user',
+        'id_barang',
+        'id_user',
         'jumlah',
     ];
 }
