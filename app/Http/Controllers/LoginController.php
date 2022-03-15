@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -32,6 +33,22 @@ class LoginController extends Controller
                 if (Auth::attempt($data)){
                     $user = Auth::user();
                     session()->put('user', $user);
+                    $idUser = $user['id'];
+                    $isExist = DB::table('keranjang')->where('id_user', $idUser)->exists();
+                    if($isExist){
+                        $keranjang = DB::table('keranjang')->where('id_user', $idUser)->get();    
+                        $jumlah = 0;
+                        $total = 0;
+                        foreach($keranjang as $k){
+                            $jumlah = $jumlah + $k->jumlah;
+                            $barang = DB::table('barang')->where('id', $k->id_barang)->get();
+                            foreach($barang as $b){
+                                $total = $total + $b->harga;
+                            }
+                        }
+                        session()->put('jumlah', $jumlah);
+                        session()->put('total', $total);
+                    }
                     view('index',['user' => $user]);
                     return redirect('/');
                 }
@@ -52,6 +69,8 @@ class LoginController extends Controller
     public function actionlogout(){
         Auth::logout();
         session()->forget('user');
+        session()->forget('jumlah');
+        session()->forget('total');
         return redirect('/');
     }
 }
