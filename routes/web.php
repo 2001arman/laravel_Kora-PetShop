@@ -36,32 +36,27 @@ Route::get('logout', [LoginController::class, 'actionlogout'])->name('actionlogo
 
 Route::post('actiondaftar', [RegisterController::class, 'create'])->name('actiondaftar');
 
-Route::get('/admin', [BarangController::class, 'index']);
+Route::get('/admin', [BarangController::class, 'index'])->middleware('admin');
 
-Route::get('/admin/tambah', [BarangController::class, 'tambah']);
+Route::get('/admin/tambah', [BarangController::class, 'tambah'])->middleware('admin');
 
-Route::post('/admin/store', [BarangController::class, 'store'])->name('actionstore');
+Route::post('/admin/store', [BarangController::class, 'store'])->name('actionstore')->middleware('admin');
 
-Route::get('/admin/hapus/{id}', [BarangController::class, 'hapus']);
+Route::get('/admin/hapus/{id}', [BarangController::class, 'hapus'])->middleware('admin');
 
-Route::get('/admin/edit/{id}', [BarangController::class, 'edit']);
+Route::get('/admin/edit/{id}', [BarangController::class, 'edit'])->middleware('admin');
 
-Route::post('/admin/update', [BarangController::class, 'update']);
-
-
-Route::get('/admin/tambah', function () {
-    return view('/admin/tambah');
-});
+Route::post('/admin/update', [BarangController::class, 'update'])->middleware('admin');
 
 Route::get('/daftar', function () {
     return view('daftar');
 });
 
-Route::get('/profile', [ProfileController::class, 'getUser']);
+Route::get('/profile', [ProfileController::class, 'getUser'])->middleware('login');
 
-Route::get('/profile/edit', [ProfileController::class, 'getEdit']);
+Route::get('/profile/edit', [ProfileController::class, 'getEdit'])->middleware('login');
 
-Route::post('/profile/update', [ProfileController::class, 'updateProfile']);
+Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->middleware('login');
 
 Route::get('/hotel', function(){
     return view('hotel');
@@ -75,4 +70,6 @@ Route::get('/perlengkapan', [BarangController::class, 'perlengkapan'] );
 
 Route::get('/detail/{id}', [BarangController::class, 'getDetail']);
 
-Route::get('/keranjang/store/{barang}/{user}', [KeranjangController::class, 'store'])->name('keranjang.store');
+Route::get('/keranjang/store/{barang}/{user}', [KeranjangController::class, 'store'])->name('keranjang.store')->middleware('login');
+
+Route::get('/keranjang', [KeranjangController::class, 'getData'])->middleware('login');
