@@ -73,3 +73,7 @@ Route::get('/detail/{id}', [BarangController::class, 'getDetail']);
 Route::get('/keranjang/store/{barang}/{user}', [KeranjangController::class, 'store'])->name('keranjang.store')->middleware('login');
 
 Route::get('/keranjang', [KeranjangController::class, 'getData'])->middleware('login');
+
+Route::get('/pesanan', function(){
+    return view('barang/pesanan');
+});
