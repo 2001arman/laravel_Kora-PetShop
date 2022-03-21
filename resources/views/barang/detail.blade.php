@@ -47,9 +47,10 @@
             <p class="harga fs-6 mb-3">Rp {{ number_format($b->harga , 0, ',', '.') }}</p>
             <p class="lh-lg">{{ $b->deskripsi }}</p>
             <p style="display: none;">
-              {{$user = 1}}
               @if(session()->has('user'))
-                $user = session()->get('user')['id'];
+                {{$user = session()->get('user')['id'];}}
+              @else
+                {{$user = 1;}}
               @endif
             </p>
             <a href="{{ route('keranjang.store', ['barang'=>$b->id, 'user'=>$user]) }}" class="fluid">
