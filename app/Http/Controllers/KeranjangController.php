@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Psr7\Message;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class KeranjangController extends Controller
 {
@@ -59,6 +61,14 @@ class KeranjangController extends Controller
                         ['id_user', '=', $user],
                         ])->update(['jumlah' => $jumlah+1 ]);
                 }
+                $dataBarang = DB::table('barang')->where('id', $barang)->get();
+                $jumlah = session()->get('jumlah') + 1;
+                $total = session()->get('total');
+                foreach($dataBarang as $b){
+                    $total = $total + $b->harga;
+                }
+                session()->put('jumlah', $jumlah);
+                session()->put('total', $total);
                 session()->flash('berhasil', 'Berhasil menambahkan jumlah barang');
                 return redirect("/detail/$barang");
             }
@@ -78,4 +88,27 @@ class KeranjangController extends Controller
         }
         return view('barang/keranjang', ['keranjang' => $keranjang, 'allBarang' => $allBarang]);
     }
+
+    protected function deleteData($idBarang){
+        $idUser = session()->get('user')['id'];
+        $jumlahKeranjang = session()->get('jumlah');
+        $jumlahBarang = DB::table('keranjang')->where([
+            ['id_barang', '=', $idBarang],
+            ['id_user', '=', $idUser],
+        ])->get();
+        $hargaBarang = DB::table('barang')->where('id', $idBarang)->get();
+        $totalSession = session()->get('total');
+        $totalSession = $totalSession - $hargaBarang[0]->harga * $jumlahBarang[0]->jumlah;
+        $jumlah = $jumlahKeranjang - $jumlahBarang[0]->jumlah;
+        DB::table('keranjang')->where([
+            ['id_barang', '=', $idBarang],
+            ['id_user', '=', $idUser],
+        ])->delete();
+        session()->put('jumlah', $jumlah);
+        session()->put('total', $totalSession);
+        session()->flash('berhasil', 'Berhasil menghapus barang di keranjang');
+        return redirect('/keranjang');
+    }
+
+    
 }
