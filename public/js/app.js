@@ -30,13 +30,6 @@ function validateCaptcha() {
   }
 
 
-function toggle(source) {
-  checkboxes = document.getElementsByName('checkboxBarang');
-  for(var i=0, n=checkboxes.length;i<n;i++) {
-    checkboxes[i].checked = source.checked;
-  }
-}
-
 function minus(id, harga){
   textJumlahBarang1 = document.getElementById("jumlahBarangKeranjang1");
   textJumlahBarang2 = document.getElementById("jumlahBarangKeranjang2");
@@ -77,3 +70,4 @@ function plus(id, harga){
   textJumlahBarang1.innerHTML = "Total Harga (" + jumlahBarang + " Barang)";
   textJumlahBarang2.innerHTML = jumlahBarang;
 }
+
