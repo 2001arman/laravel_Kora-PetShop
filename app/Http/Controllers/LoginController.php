@@ -43,8 +43,9 @@ class LoginController extends Controller
                             $jumlah = $jumlah + $k->jumlah;
                             $barang = DB::table('barang')->where('id', $k->id_barang)->get();
                             foreach($barang as $b){
-                                $total = $total + $b->harga;
+                                $total = $total + $b->harga * $k->jumlah;
                             }
+                            
                         }
                         session()->put('jumlah', $jumlah);
                         session()->put('total', $total);
@@ -69,10 +70,7 @@ class LoginController extends Controller
 
     public function actionlogout(){
         Auth::logout();
-        session()->forget('admin');
-        session()->forget('user');
-        session()->forget('jumlah');
-        session()->forget('total');
+        session()->flush();
         return redirect('/');
     }
 }
