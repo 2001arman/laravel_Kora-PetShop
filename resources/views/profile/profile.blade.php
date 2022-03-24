@@ -19,13 +19,12 @@
       @include('navbar')
       <!-- akhir navbar -->
     </header>
-    @foreach($user as $u)
     <main>
       <div class="container-fluid my-5 py-3 px-5">
         <div class="row mt-5 pt-3 pe-5">
           <div class="col-4 text-center px-5 ">
             <img class="mx-auto mb-4 rounded-circle" src="{{url('img/image_avatar.png')}}" alt="avatar" srcset="" width="230px">
-            <h2>{{ $u->nama }}</h2>
+            <h2>{{ $user[0]->nama }}</h2>
             <p class="fw-light">Member</p>
             <button type="button" class="myButton fluid" onclick="location.href='/profile/edit/'"> <i class="bi bi-pencil-fill me-1"></i> Edit Profile</button>
           </div>
@@ -37,35 +36,23 @@
                     <th scope="col">Jenis</th>
                     <th scope="col">Jumlah</th>
                     <th scope="col">Harga</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Invoice</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @for ($i = 0; $i < 5; $i++)
+                    @foreach($pesanan as $index => $p)
                         <tr>
-                            <td scope="row">Makanan</td>
-                            <td>3 buah</td>
-                            <td>Rp 100.000</td>
-                            <td class="color-danger">Belum dibayar</td>
-                            <td><a href="#"><i class="bi bi-download"></i></a></td>
+                            <td scope="row">{{ $allBarang[$index] }}</td>
+                            <td>{{ $p->jumlah }} buah</td>
+                            <td>Rp {{ number_format($hargaBarang[$index] , 0, ',', '.') }}</td>
+                            <td><a href="/resiPesanan/{{$p->id}}"><i class="bi bi-download"></i></a></td>
                         </tr>
-                    @endfor
-                    @for ($i = 0; $i < 5; $i++)
-                        <tr>
-                            <td scope="row">Makanan</td>
-                            <td>3 buah</td>
-                            <td>Rp 100.000</td>
-                            <td class="color-success">Sudah dibayar</td>
-                            <td><a href="#"><i class="bi bi-download"></i></a></td>
-                        </tr>
-                    @endfor
+                    @endforeach
                 </tbody>
               </table>
           </div>
         </div>
       </div>
-      @endforeach
     </main>
     
     <!-- footer -->
