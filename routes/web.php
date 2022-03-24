@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +75,10 @@ Route::get('/keranjang/store/{barang}/{user}', [KeranjangController::class, 'sto
 
 Route::get('/keranjang', [KeranjangController::class, 'getData'])->middleware('login');
 
-Route::get('/pesanan', function(){
-    return view('barang/pesanan');
-});
+Route::get('/keranjang/hapus/{barang}', [KeranjangController::class, 'deleteData']);
+
+Route::get('/pesanan/store', [PesananController::class, 'pesanBarang']);
+
+Route::get('/pesanan', [PesananController::class, 'getPesananTadi']);
+
+Route::get('/resiPesanan/{id}', [PesananController::class, 'downloadPesanan']);
