@@ -38,7 +38,6 @@
           <form action="/profile/update" method="post">
             @csrf
             <img class="mx-auto mb-4 rounded-circle display-block" src="{{url('img/image_avatar.png')}}" alt="avatar" srcset="" width="230px">
-            <button type="button" class="mx-auto myButton fluid display-block mb-5 fw-semiBold" style="width: 230px!important; background-color: #7CC1BC!important;"> <i class="bi bi-upload me-1"></i> Upload Foto</button>
             <!-- form -->
             <input type="hidden" name="id" value="{{ $u->id }}">
             <div class="form-floating mb-4">
