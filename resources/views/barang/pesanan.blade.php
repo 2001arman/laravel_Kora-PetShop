@@ -25,22 +25,78 @@
   </header>
 
   <main class="py-5 px-5 mt-5 mx-5">
-        <h3 class="my-3">Pesanan</h3>
-        <div class="border my-4"></div>
-        <p class="fw-semiBold fs-5">Barang</p>
-        @for ($i = 0; $i < 5; $i++)
-        <div class="border default-radius d-flex p-3 mb-3">
-            <img class="radius12" src="https://drive.google.com/uc?export=view&id=1QiJKAyGHps0jBMBfjpQPwUmn0NMZtn2B" alt="gambar" width="180px">
-            <div class="mt-4 fluid">
-                <span class="stok">Stok Tersedia</span>
-                <p class="fs-5 fw-semiBold mt-2 mb-1">Whiskas Tuna Wet Food 400 Gram</p>
-                <div class="d-flex justify-content-between mt-3">
-                    <p class="harga fs-6 mb-3">Rp {{ number_format(28500 , 0, ',', '.') }}</p>
-                    <p class="harga fs-6 me-3">1 Buah</p>
-                </div>
+    <!-- pesanan -->
+    <p style="display: none;">
+      {{ $jumlah = 0 }}
+      {{ $total = 0 }}
+    </p>
+    <h3 class="my-3">Pesanan</h3>
+    <div class="border my-4"></div>
+    <p class="fw-semiBold fs-5">Barang</p>
+    @foreach($allBarang as $index => $barang)
+    <div class="border default-radius d-flex p-3 mb-3">
+        <img class="radius12" src="{{ $barang->gambar }}" alt="gambar" width="180px">
+        <div class="mt-4 fluid">
+            <span class="stok">Stok Tersedia</span>
+            <p class="fs-5 fw-semiBold mt-2 mb-1">{{ $barang->nama }}</p>
+            <div class="d-flex justify-content-between mt-3">
+                <p class="harga fs-6 mb-3">Rp {{ number_format($barang->harga , 0, ',', '.') }}</p>
+                <p class="harga fs-6 me-3">{{session()->get($barang->id)}} Buah</p>
             </div>
-        </div> 
-        @endfor
+        </div>
+    </div>
+    <p style="display: none;">
+      {{ $jumlah = $jumlah + 1 }}
+      {{ $total = $total + $barang->harga * session()->get("$barang->id") }}
+    </p>
+    @endforeach
+    <!-- akhir pesanan -->
+    <!-- pemesan -->
+    <div class="border mb-4 mt-5"></div>
+    <h3 class="my-3">Pemesan</h3>
+    <div class="border default-radius d-flex py-3 px-4 mb-3">
+      <img src="{{ url('img/image_avatar.png') }}" alt="avatar" width="200px" height="200px" class="me-4">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th scope="row" class="col-2">Nama</td>
+            <td class="col-10">{{ session()->get('user')['nama'] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Username</td>
+            <td>{{ session()->get('user')['username'] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Email</td>
+            <td>{{ session()->get('user')['email'] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Alamat</td>
+            <td>{{ session()->get('user')['alamat'] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">No. HP</td>
+            <td>{{ session()->get('user')['no_hp'] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- akhir pemesan -->
+    <!-- ringakasan belanja -->
+    <div class="border mb-4 mt-5"></div>
+    <h3 class="my-3">Ringkasan Belanja</h3>
+    <div class="border default-radius py-3 px-3 mb-3">
+      <div class="d-flex justify-content-between container-fluid">
+        <p class="harga">Total Harga ({{ $jumlah }} Barang)</p>
+        <p class="harga">Rp {{ number_format($total , 0, ',', '.') }}</p>
+      </div>
+      <div class="border mb-3 mx-2"></div>
+      <div class="d-flex justify-content-between container-fluid">
+        <p >Total Harga </p>
+        <p >Rp {{ number_format($total , 0, ',', '.') }}</p>
+      </div>
+    </div>
+    <!-- akhir ringkasan -->
   </main>
 
   <!-- footer -->
@@ -57,6 +113,23 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="{{ url('js/owl.carousel.min.js') }}"></script>
   <script src="{{ url('js/script.js') }}"></script>
+  <script>
+    var css = '@page { size: landscape; }',
+    head = document.head || document.getElementsByTagName('head')[0],
+    style = document.createElement('style');
+
+    style.type = 'text/css';
+    style.media = 'print';
+
+    if (style.styleSheet){
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+
+    head.appendChild(style);
+    window.print()
+  </script>
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
