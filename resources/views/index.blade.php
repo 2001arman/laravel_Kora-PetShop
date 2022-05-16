@@ -27,7 +27,7 @@
             <p class="judul">KORA PETSHOP</p>
             <h1 class="lh-3">Memenuhi Kebutuhan<br>Hewan Peliharaan Anda</h1>
             <p class="text-secondary">Kami menyediakan berbagai layanan dan berbagai macam <br> kebutuhan terlengkap untuk hewan peliharaan Anda</p>
-            <button type="button" class="myButton mt-3">Lihat Layanan</button>
+            <button type="button" class="myButton mt-3" onclick="scrollToView()">Lihat Layanan</button>
           </div>
           <div class="col">
             <img src="{{url('img/dog-big.png')}}" alt="">
@@ -37,7 +37,7 @@
       <!-- akhir big container -->
 
       <!-- layanan -->
-      <div class="container-fluid mt-3 mb-5 pb-5">
+      <div class="container-fluid mt-3 mb-5 pb-5" id="layanan-section">
         <p class="text-center">LAYANAN</p>
         <h2 class="text-center">Layanan-Layanan yang Kami<br>Sediakan untuk Pelanggan Kami</h2>
         <div class="d-md-flex flex-row justify-content-around px-5 mt-5">
@@ -77,7 +77,7 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+    <script src="{{url('js/app.js')}}"></script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
