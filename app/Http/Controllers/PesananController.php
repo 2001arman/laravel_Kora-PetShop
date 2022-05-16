@@ -55,7 +55,7 @@ class PesananController extends Controller
                     'id' => $idBarang,
                 ])->get();
                 $allBarang = $allBarang->merge($barangPesanan);
-                session()->put($idBarang, $jumlah);
+                session()->put("jumlahBarang$idBarang", $jumlah);
             }
             session()->put('allBarang', $allBarang);
             return redirect('/pesanan');
