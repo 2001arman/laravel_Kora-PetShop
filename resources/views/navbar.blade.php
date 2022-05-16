@@ -10,7 +10,7 @@
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item mx-3">
-            <a class="nav-link" href="#">Hubungi Kami</a>
+            <a class="nav-link" href="https://api.whatsapp.com/send/?phone=%2B6282338368917&text=Halo+Admin+Kora+Shop+%3E%3C+Saya+Mau+berkonsultasi+Terkait+Peliharaan+Saya+apakah+bisa%3F+Terimakasih&_fb_noscript=1">Hubungi Kami</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
