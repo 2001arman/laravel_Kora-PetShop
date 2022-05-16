@@ -24,7 +24,7 @@
       <div class="container-fluid mt-5 pt-5 text-center">
         <p class="judul mt-3 fw-semiBold">KORA PETSHOP</p>
         <h1 class="lh-3 fw-semiBold">Ingin Liburan Dengan Nyaman?<br>Titipkan Hewan Peliharaanmu<br>di Pet Hotel</h1>
-        <button class="myButton mt-3"><img src="{{ url('img/icon_WA.png') }}" alt="icon whatsapp"> Booking Pet Hotel</button> <br>
+        <button class="myButton mt-3" onclick="location.href='https://api.whatsapp.com/send/?phone=%2B6282338368917&text=Halo+Admin+Kora+Shop+%3E%3C+Saya+Mau+memesan+Slot+Untuk+Pet+Hotel+Apakah+Bisa%3F+Terimakasih&_fb_noscript=1'"><img src="{{ url('img/icon_WA.png') }}" alt="icon whatsapp"> Booking Pet Hotel</button> <br>
         <img src="{{ url('img/cat-big.png') }}" alt="cat-big" width="60%" class="mt-4">
       </div>
       <!-- akhir top -->
@@ -115,7 +115,7 @@
             </tbody>
           </table>
         </div>
-        <button class="myButton my-5 px-4 mx-auto display-block"><img src="{{ url('img/icon_WA.png') }}" alt="icon whatsapp"> Booking Pet Hotel Sekarang</button> <br>
+        <button class="myButton my-5 px-4 mx-auto display-block" onclick="location.href='https://api.whatsapp.com/send/?phone=%2B6282338368917&text=Halo+Admin+Kora+Shop+%3E%3C+Saya+Mau+memesan+Slot+Untuk+Pet+Hotel+Apakah+Bisa%3F+Terimakasih&_fb_noscript=1'"><img src="{{ url('img/icon_WA.png') }}" alt="icon whatsapp"> Booking Pet Hotel Sekarang</button> <br>
       </div>
       <!-- akhir harga -->
     </main>
