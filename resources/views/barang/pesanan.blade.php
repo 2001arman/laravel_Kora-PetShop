@@ -20,34 +20,39 @@
 <body>
   <header>
     <!-- navbar -->
-    @include('navbar')
+    @include('navbarNoFix')
     <!-- akhir navbar -->
   </header>
 
-  <main class="py-5 px-5 mt-5 mx-5">
+  <main class="py-5 px-5 mx-5">
     <!-- pesanan -->
     <p style="display: none;">
       {{ $jumlah = 0 }}
       {{ $total = 0 }}
     </p>
+    <div class="alert alert-primary">
+      <b>Yeay Checkout Berhasil!</b>
+      <p class="mt-1 fw-semiBold">Mohon bukti pembelian disimpan dan kirimkan ke admin</p>
+  </div>
     <h3 class="my-3">Pesanan</h3>
     <div class="border my-4"></div>
     <p class="fw-semiBold fs-5">Barang</p>
     @foreach($allBarang as $index => $barang)
     <div class="border default-radius d-flex p-3 mb-3">
-        <img class="radius12" src="{{ $barang->gambar }}" alt="gambar" width="180px">
+        <img class="radius12 me-3" src="{{ $barang->gambar }}" alt="gambar" width="180px">
         <div class="mt-4 fluid">
             <span class="stok">Stok Tersedia</span>
             <p class="fs-5 fw-semiBold mt-2 mb-1">{{ $barang->nama }}</p>
             <div class="d-flex justify-content-between mt-3">
                 <p class="harga fs-6 mb-3">Rp {{ number_format($barang->harga , 0, ',', '.') }}</p>
-                <p class="harga fs-6 me-3">{{session()->get($barang->id)}} Buah</p>
+                <p class="harga fs-6 me-3">{{session()->get("jumlahBarang$barang->id")}} Buah</p>
             </div>
         </div>
     </div>
     <p style="display: none;">
+      {{session()->get("jumlahBarang$barang->id")}}
       {{ $jumlah = $jumlah + 1 }}
-      {{ $total = $total + $barang->harga * session()->get("$barang->id") }}
+      {{ $total = $total + $barang->harga * session()->get("jumlahBarang$barang->id") }}
     </p>
     @endforeach
     <!-- akhir pesanan -->
