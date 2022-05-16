@@ -71,3 +71,9 @@ function plus(id, harga){
   textJumlahBarang2.innerHTML = jumlahBarang;
 }
 
+function scrollToView(){
+  // var elmntToView = document.getElementById("layanan-section");
+  // window.scrollIntoView(993); 
+  window.scroll(0, 720);
+  console.log("tes");
+}
