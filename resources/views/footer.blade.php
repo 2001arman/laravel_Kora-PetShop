@@ -5,7 +5,7 @@
           <img src="{{url('img/logo-small.png')}}" alt="logo" srcset="" width=""> <br>
           <div class="d-flex mt-4">
             <img src="{{url('img/icon_location.png')}}" alt="location" height="24px">
-            <p class="fs-6 ms-3"> Jalan Damnhuri 2 (eks Gg Ogok), <br>
+            <p class="fs-6 ms-3"> Jalan Damanhuri 2 (eks Gg Ogok), <br>
               50 meter setelah gunung pertama sebelah kanan  <br>
               (samping nasi goreng) </p>
           </div>
@@ -20,7 +20,9 @@
         </div>
         <div class="col-3 me-3">
           <p class="fw-bold">Lokasi</p>
-          <img src="{{url('img/image_maps.png')}}" alt="maps" srcset="">
+          <a href="https://maps.app.goo.gl/uq9T3s6VfZTVvHKz9">
+            <img src="{{url('img/image_maps.png')}}" alt="maps" srcset="">
+          </a>
         </div>
         <div class="col-3 ">
           <p class="fw-bold">Layanan Kami</p>
